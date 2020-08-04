@@ -1,6 +1,7 @@
 import argparse
 import d4rl
 import gym
+import numpy as np
 
 
 if __name__ == "__main__":
@@ -12,11 +13,15 @@ if __name__ == "__main__":
     
     dataset = env.get_dataset()
     if 'infos/qpos' not in dataset:
-        raise ValueError('Only MuJoCo-based environments can be visualized')
-    qpos = dataset['infos/qpos']
-    qvel = dataset['infos/qvel']
+        # raise ValueError('Only MuJoCo-based environments can be visualized')
+        qpos = dataset['observations'][:, :30]
+        qvel = np.zeros_like(qpos)[:, :29]
+    else:
+        qpos = dataset['infos/qpos']
+        qvel = dataset['infos/qvel']
     rewards = dataset['rewards']
     actions = dataset['actions']
+    print(dataset['terminals'].shape[0] / dataset['terminals'].sum(), dataset['terminals'].sum())
 
     env.reset()
     env.set_state(qpos[0], qvel[0])
