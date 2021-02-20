@@ -37,7 +37,7 @@ class KitchenV0(robot_env.RobotEnv):
     N_DOF_ROBOT = 9
     N_DOF_OBJECT = 21
 
-    def __init__(self, robot_params={}, frame_skip=40):
+    def __init__(self, robot_params={}, frame_skip=16):
         self.goal_concat = True
         self.obs_dict = {}
         self.robot_noise_ratio = 0.1  # 10% as per robot_config specs
@@ -71,7 +71,7 @@ class KitchenV0(robot_env.RobotEnv):
         self.init_qvel = self.sim.model.key_qvel[0].copy()
 
         self.act_mid = np.zeros(self.N_DOF_ROBOT)
-        self.act_amp = 2.0 * np.ones(self.N_DOF_ROBOT)
+        self.act_amp = 10 * (40. / frame_skip) *  2.0 * np.ones(self.N_DOF_ROBOT)
 
         act_lower = -1*np.ones((self.N_DOF_ROBOT,))
         act_upper =  1*np.ones((self.N_DOF_ROBOT,))
