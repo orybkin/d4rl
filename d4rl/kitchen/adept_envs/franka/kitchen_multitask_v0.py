@@ -30,7 +30,8 @@ class KitchenV0(robot_env.RobotEnv):
         os.path.join(os.path.dirname(__file__), 'robot/franka_config.xml')
     }
     # Converted to velocity actuation
-    ROBOTS = {'robot': 'd4rl.kitchen.adept_envs.franka.robot.franka_robot:Robot_VelAct'}
+    ROBOTS = {'robot': 'd4rl.kitchen.adept_envs.franka.robot.franka_robot:Robot_VelAct',
+              'robot_posact': 'd4rl.kitchen.adept_envs.franka.robot.franka_robot:Robot_PosAct'}
     MODEl = os.path.join(
         os.path.dirname(__file__),
         '../franka/assets/franka_kitchen_jntpos_act_ab.xml')
@@ -177,8 +178,8 @@ class KitchenV0(robot_env.RobotEnv):
 class KitchenTaskRelaxV1(KitchenV0):
     """Kitchen environment with proper camera and goal setup"""
 
-    def __init__(self):
-        super(KitchenTaskRelaxV1, self).__init__()
+    def __init__(self, **kwargs):
+        super(KitchenTaskRelaxV1, self).__init__(**kwargs)
 
     def _get_reward_n_score(self, obs_dict):
         reward_dict = {}

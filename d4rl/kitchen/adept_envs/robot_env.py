@@ -112,7 +112,7 @@ class RobotEnv(mujoco_env.MujocoEnv):
                    n_obj=0,
                    is_hardware=False,
                    device_name=None,
-                   legacy=False,
+                   robot_name='robot',
                    **kwargs):
         """Creates a new robot for the environment.
 
@@ -134,7 +134,6 @@ class RobotEnv(mujoco_env.MujocoEnv):
         if is_hardware and not device_name:
             raise ValueError('Must provide device name if running on hardware.')
 
-        robot_name = 'dds_robot' if not legacy and is_hardware else 'robot'
         if robot_name not in self.ROBOTS:
             raise KeyError("Unsupported robot '{}', available: {}".format(
                 robot_name, list(self.ROBOTS.keys())))
