@@ -90,7 +90,6 @@ class KitchenV0(robot_env.RobotEnv):
     def __init__(
         self,
         robot_params={},
-        max_path_length=5,
         frame_skip=40,
         image_obs=False,
         imwidth=64,
@@ -114,7 +113,6 @@ class KitchenV0(robot_env.RobotEnv):
         # self.robot_noise_ratio = 0.1  # 10% as per robot_config specs
         self.robot_noise_ratio = 0.0  # 10% as per robot_config specs
         self.goal = np.zeros((30,))
-        self.max_path_length = max_path_length
         self.step_count = 0
         self.view = view
         self.use_wrist_cam = use_wrist_cam
@@ -828,9 +826,7 @@ class KitchenV0(robot_env.RobotEnv):
         reward_dict, score = self._get_reward_n_score(self.obs_dict)
 
         # termination
-        if not self.initializing:
-            self.step_count += 1
-        done = self.step_count == self.max_path_length
+        done = False
 
         # finalize step
         env_info = {
