@@ -149,7 +149,7 @@ class MujocoEnv(gym.Env):
 
     def set_state(self, qpos, qvel):
         assert qpos.shape == (self.model.nq,) and qvel.shape == (self.model.nv,)
-        state = np.concatenate((qpos, qvel))
+        state = np.concatenate([qpos, qvel])
         # state = self.sim.get_state()
         # for i in range(self.model.nq):
         #     state.qpos[i] = qpos[i]
