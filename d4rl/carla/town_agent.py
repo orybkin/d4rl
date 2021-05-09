@@ -1,6 +1,6 @@
 # A baseline town agent.
-from agents.navigation.agent import Agent, AgentState
 import numpy as np
+from agents.navigation.agent import Agent, AgentState
 from agents.navigation.local_planner import LocalPlanner
 
 

@@ -1,4 +1,5 @@
 from gym.envs.registration import register
+
 from d4rl.gym_mujoco import gym_envs
 
 HOPPER_RANDOM_SCORE = -20.272305

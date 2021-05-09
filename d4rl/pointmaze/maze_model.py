@@ -1,11 +1,12 @@
 """ A pointmass maze env."""
-from gym.envs.mujoco import mujoco_env
-from gym import utils
-from d4rl import offline_env
-from d4rl.pointmaze.dynamic_mjc import MJCModel
-import numpy as np
 import random
 
+import numpy as np
+from gym import utils
+from gym.envs.mujoco import mujoco_env
+
+from d4rl import offline_env
+from d4rl.pointmaze.dynamic_mjc import MJCModel
 
 WALL = 10
 EMPTY = 11

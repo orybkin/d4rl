@@ -14,11 +14,11 @@
 
 <mujoco model="franka_mocap_studyTable_buttons">
 
-    <size njmax='1000' nconmax='1000'/>
+    <size njmax='5000' nconmax='5000'/>
 
     <include file="../../../adept_models/scenes/basic_scene.xml"/>
     <include file="../../../third_party/franka/assets/assets.xml"/>
-    <include file="../../../third_party/franka/assets/actuator0.xml"/>
+    <include file="../../../third_party/franka/assets/actuator_joint_position.xml"/>
     <include file="../../../adept_models/kitchen/assets/oven_asset.xml"/>
     <include file="../../../adept_models/kitchen/assets/counters_asset.xml"/>
     <include file="../../../adept_models/kitchen/assets/backwall_asset.xml"/>

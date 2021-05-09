@@ -1,6 +1,5 @@
 import numpy as np
 
-
 EMPTY = 110
 WALL = 111
 START = 112

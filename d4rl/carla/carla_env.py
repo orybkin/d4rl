@@ -5,11 +5,12 @@ import os
 import random
 import sys
 import time
+
+import gym
+import gym.spaces as spaces
+from gym import Env
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
-import gym
-from gym import Env
-import gym.spaces as spaces
 
 # from . import proxy_env
 from d4rl.offline_env import OfflineEnv
@@ -28,9 +29,9 @@ try:
 except IndexError:
     pass
 
-import carla
 import math
 
+import carla
 from dotmap import DotMap
 
 try:
@@ -50,10 +51,10 @@ except ImportError:
 
 # This is CARLA agent
 from agents.navigation.agent import Agent, AgentState
-from agents.navigation.local_planner import LocalPlanner
 from agents.navigation.global_route_planner import GlobalRoutePlanner
 from agents.navigation.global_route_planner_dao import GlobalRoutePlannerDAO
-from agents.tools.misc import is_within_distance_ahead, compute_magnitude_angle
+from agents.navigation.local_planner import LocalPlanner
+from agents.tools.misc import compute_magnitude_angle, is_within_distance_ahead
 
 
 def is_within_distance(

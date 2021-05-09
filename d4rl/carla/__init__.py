@@ -1,7 +1,6 @@
-from .carla_env import CarlaObsDictEnv
-from .carla_env import CarlaObsEnv
 from gym.envs.registration import register
 
+from .carla_env import CarlaObsDictEnv, CarlaObsEnv
 
 register(
     id="carla-lane-v0",

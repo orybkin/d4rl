@@ -15,13 +15,14 @@
 
 """Adapted from efficient-hrl maze_env.py."""
 
+import math
 import os
 import tempfile
 import xml.etree.ElementTree as ET
-import math
-import numpy as np
-import gym
 from copy import deepcopy
+
+import gym
+import numpy as np
 
 RESET = R = "r"  # Reset position.
 GOAL = G = "g"

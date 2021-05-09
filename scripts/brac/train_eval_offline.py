@@ -14,31 +14,21 @@
 # limitations under the License.
 
 """Training and evaluation in the offline mode."""
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
 import collections
 import os
 import time
-
-from absl import logging
-
 
 import gin
 import gym
 import numpy as np
 import tensorflow as tf0
 import tensorflow.compat.v1 as tf
-
-from behavior_regularized_offline_rl.brac import dataset
-from behavior_regularized_offline_rl.brac import train_eval_utils
-from behavior_regularized_offline_rl.brac import utils
-
+from absl import logging
+from behavior_regularized_offline_rl.brac import dataset, train_eval_utils, utils
 from gym.wrappers import time_limit
-
-from tf_agents.environments import tf_py_environment
-from tf_agents.environments import gym_wrapper
+from tf_agents.environments import gym_wrapper, tf_py_environment
 
 
 def get_offline_data(tf_env):

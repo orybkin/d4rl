@@ -23,7 +23,6 @@ from typing import Dict, Optional
 
 import numpy as np
 
-
 from d4rl.kitchen.adept_envs import mujoco_env
 from d4rl.kitchen.adept_envs.base_robot import BaseRobot
 from d4rl.kitchen.adept_envs.utils.configurable import import_class_from_path

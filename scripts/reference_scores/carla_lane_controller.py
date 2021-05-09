@@ -1,8 +1,10 @@
-import d4rl
-import gym
-from d4rl.carla import data_collection_agent_lane
-import numpy as np
 import argparse
+
+import gym
+import numpy as np
+
+import d4rl
+from d4rl.carla import data_collection_agent_lane
 
 
 def main():

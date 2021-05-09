@@ -1,10 +1,11 @@
-from d4rl.pointmaze import MazeEnv, maze_model
-from d4rl.offline_env import get_keys
-import os
 import argparse
-import numpy as np
-import h5py
+import os
 
+import h5py
+import numpy as np
+
+from d4rl.offline_env import get_keys
+from d4rl.pointmaze import MazeEnv, maze_model
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SAC-BEAR")

@@ -1,7 +1,8 @@
 import os
+import urllib.request
+
 import gym
 import h5py
-import urllib.request
 
 
 def set_dataset_path(path):

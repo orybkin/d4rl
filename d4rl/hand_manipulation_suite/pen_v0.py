@@ -1,11 +1,12 @@
-import numpy as np
-from gym import utils
-from gym import spaces
-from mjrl.envs import mujoco_env
-from d4rl.utils.quatmath import quat2euler, euler2quat
-from d4rl import offline_env
-from mujoco_py import MjViewer
 import os
+
+import numpy as np
+from gym import spaces, utils
+from mjrl.envs import mujoco_env
+from mujoco_py import MjViewer
+
+from d4rl import offline_env
+from d4rl.utils.quatmath import euler2quat, quat2euler
 
 ADD_BONUS_REWARDS = True
 

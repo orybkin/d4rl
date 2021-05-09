@@ -1,10 +1,11 @@
+import os
+import pickle
+
 import brenvs
 import click
-import h5py
-import os
 import gym
+import h5py
 import numpy as np
-import pickle
 from mjrl.utils.gym_env import GymEnv
 
 DESC = """

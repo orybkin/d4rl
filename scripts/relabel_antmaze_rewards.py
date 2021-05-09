@@ -1,11 +1,12 @@
-import d4rl.locomotion
-from offline_rl.offline_env import get_keys
-import os
 import argparse
-import numpy as np
+import os
+
 import gym
 import h5py
+import numpy as np
+from offline_rl.offline_env import get_keys
 
+import d4rl.locomotion
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

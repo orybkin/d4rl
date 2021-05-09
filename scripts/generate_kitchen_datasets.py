@@ -1,11 +1,13 @@
 """Script for generating the datasets for kitchen environments."""
-import d4rl.kitchen
 import glob
+import os
+import pickle
+
 import gym
 import h5py
 import numpy as np
-import os
-import pickle
+
+import d4rl.kitchen
 
 np.set_printoptions(precision=2, suppress=True)
 

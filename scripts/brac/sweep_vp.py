@@ -1,9 +1,11 @@
 import os
+
 import doodad
+import gym
 from doodad.wrappers.sweeper import launcher
+
 import d4rl
 import d4rl.flow
-import gym
 
 ENVS = [
     #'flow-ring-random-v0',

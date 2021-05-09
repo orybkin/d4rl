@@ -15,6 +15,7 @@ import os
 import random
 import sys
 import time
+
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
 
@@ -32,9 +33,9 @@ try:
 except IndexError:
     pass
 
-import carla
 import math
 
+import carla
 from dotmap import DotMap
 
 try:
@@ -53,13 +54,13 @@ except ImportError:
     import Queue as queue
 
 from agents.navigation.agent import Agent, AgentState
-from agents.navigation.local_planner import LocalPlanner
 from agents.navigation.global_route_planner import GlobalRoutePlanner
 from agents.navigation.global_route_planner_dao import GlobalRoutePlannerDAO
-from agents.tools.misc import (
+from agents.navigation.local_planner import LocalPlanner
+from agents.tools.misc import (  # , is_within_distance, compute_distance
+    compute_magnitude_angle,
     is_within_distance_ahead,
-)  # , is_within_distance, compute_distance
-from agents.tools.misc import is_within_distance_ahead, compute_magnitude_angle
+)
 
 
 def is_within_distance(

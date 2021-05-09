@@ -1,11 +1,12 @@
+import argparse
+import gzip
 import logging
+import pickle
+
+import h5py
+import numpy as np
 from offline_rl.gym_minigrid import fourroom_controller
 from offline_rl.gym_minigrid.envs import fourrooms
-import numpy as np
-import pickle
-import gzip
-import h5py
-import argparse
 
 
 def reset_data():

@@ -1,13 +1,14 @@
-import numpy as np
-import pickle
-import gzip
-import h5py
 import argparse
-from offline_rl.locomotion import maze_env, ant, swimmer
-from offline_rl.locomotion.wrappers import NormalizedBoxEnv
-import torch
-from PIL import Image
+import gzip
 import os
+import pickle
+
+import h5py
+import numpy as np
+import torch
+from offline_rl.locomotion import ant, maze_env, swimmer
+from offline_rl.locomotion.wrappers import NormalizedBoxEnv
+from PIL import Image
 
 
 def reset_data():

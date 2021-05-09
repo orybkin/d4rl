@@ -1,10 +1,11 @@
+import os
+
 import numpy as np
-from gym import utils
-from gym import spaces
+from gym import spaces, utils
 from mjrl.envs import mujoco_env
 from mujoco_py import MjViewer
+
 from d4rl import offline_env
-import os
 
 ADD_BONUS_REWARDS = True
 

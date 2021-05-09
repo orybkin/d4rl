@@ -1,6 +1,6 @@
 from gym.envs.registration import register
-from d4rl.locomotion import ant
-from d4rl.locomotion import maze_env
+
+from d4rl.locomotion import ant, maze_env
 
 """
 register(

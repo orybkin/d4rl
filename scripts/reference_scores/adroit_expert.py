@@ -5,13 +5,15 @@ Instructions:
 2) Place the policies from dapg_policies in the current directory
 3) Run this script passing in the appropriate env_name
 """
-import d4rl
 import argparse
 import os
+import pickle
+
 import gym
 import numpy as np
-import pickle
 from mjrl.utils.gym_env import GymEnv
+
+import d4rl
 
 
 def main():

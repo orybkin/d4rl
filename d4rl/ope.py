@@ -1,9 +1,9 @@
 """
 Metrics for off-policy evaluation.
 """
-from d4rl import infos
 import numpy as np
 
+from d4rl import infos
 
 UNDISCOUNTED_POLICY_RETURNS = {
     "halfcheetah-medium": 3985.8150261686337,

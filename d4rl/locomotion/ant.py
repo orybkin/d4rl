@@ -16,18 +16,15 @@
 """Wrapper for creating the ant environment."""
 
 import math
-import numpy as np
-import mujoco_py
 import os
 
+import mujoco_py
+import numpy as np
 from gym import utils
 from gym.envs.mujoco import mujoco_env
-from d4rl.locomotion import mujoco_goal_env
 
-from d4rl.locomotion import goal_reaching_env
-from d4rl.locomotion import maze_env
 from d4rl import offline_env
-from d4rl.locomotion import wrappers
+from d4rl.locomotion import goal_reaching_env, maze_env, mujoco_goal_env, wrappers
 
 GYM_ASSETS_DIR = os.path.join(os.path.dirname(mujoco_goal_env.__file__), "assets")
 

@@ -1,12 +1,13 @@
-import gym
-import logging
-from d4rl.pointmaze import waypoint_controller
-from d4rl.pointmaze import maze_model
-import numpy as np
-import pickle
-import gzip
-import h5py
 import argparse
+import gzip
+import logging
+import pickle
+
+import gym
+import h5py
+import numpy as np
+
+from d4rl.pointmaze import maze_model, waypoint_controller
 
 
 def reset_data():

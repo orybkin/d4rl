@@ -2,19 +2,19 @@
 # Version differences in rlkit may raise an assertion error, `assert set(d.keys()) == set(keys)`
 # To prevent this error, comment out the `for info_key in ...` for loop in rlkit/core/eval_util.py.
 
-from gym.envs.mujoco import HalfCheetahEnv
-
+import gym
 import rlkit.torch.pytorch_util as ptu
+from gym.envs.mujoco import HalfCheetahEnv
 from rlkit.data_management.env_replay_buffer import EnvReplayBuffer
 from rlkit.envs.wrappers import NormalizedBoxEnv
 from rlkit.launchers.launcher_util import setup_logger
 from rlkit.samplers.data_collector import MdpPathCollector
-from rlkit.torch.sac.policies import TanhGaussianPolicy, MakeDeterministic
-from rlkit.torch.sac.sac import SACTrainer
 from rlkit.torch.networks import FlattenMlp
+from rlkit.torch.sac.policies import MakeDeterministic, TanhGaussianPolicy
+from rlkit.torch.sac.sac import SACTrainer
 from rlkit.torch.torch_rl_algorithm import TorchBatchRLAlgorithm
 
-import d4rl, gym
+import d4rl
 
 
 def experiment(variant):

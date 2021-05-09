@@ -1,16 +1,25 @@
 import flow
 import flow.envs
-from flow.core.params import NetParams, VehicleParams, EnvParams, InFlows
-from flow.core.params import SumoLaneChangeParams, SumoCarFollowingParams
-from flow.networks.ring import ADDITIONAL_NET_PARAMS
+from flow.controllers import (
+    RLController,
+    SimCarFollowingController,
+    SimLaneChangeController,
+)
 from flow.controllers.routing_controllers import ContinuousRouter
-from flow.controllers import SimCarFollowingController, SimLaneChangeController
-from flow.controllers import RLController
-from flow.core.params import InitialConfig
-from flow.core.params import TrafficLightParams
-from flow.core.params import SumoParams
+from flow.core.params import (
+    EnvParams,
+    InFlows,
+    InitialConfig,
+    NetParams,
+    SumoCarFollowingParams,
+    SumoLaneChangeParams,
+    SumoParams,
+    TrafficLightParams,
+    VehicleParams,
+)
 from flow.envs import BottleneckDesiredVelocityEnv
 from flow.networks import BottleneckNetwork
+from flow.networks.ring import ADDITIONAL_NET_PARAMS
 
 
 def bottleneck(render="drgb"):

@@ -1,11 +1,13 @@
 import math
-import gym
 from enum import IntEnum
+
+import gym
 import numpy as np
 from gym import error, spaces, utils
 from gym.utils import seeding
-from d4rl.gym_minigrid.rendering import *
+
 from d4rl import offline_env
+from d4rl.gym_minigrid.rendering import *
 
 # Size in pixels of a tile in the full-scale human view
 TILE_PIXELS = 32

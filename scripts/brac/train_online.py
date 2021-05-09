@@ -14,25 +14,17 @@
 # limitations under the License.
 
 """Online training binary."""
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
 import os
 
-from absl import app
-from absl import flags
-from absl import logging
-
-
 import gin
+import tensorflow.compat.v1 as tf
+from absl import app, flags, logging
+from behavior_regularized_offline_rl.brac import agents, train_eval_online, utils
+
 import d4rl
 import d4rl.flow
-import tensorflow.compat.v1 as tf
-
-from behavior_regularized_offline_rl.brac import agents
-from behavior_regularized_offline_rl.brac import train_eval_online
-from behavior_regularized_offline_rl.brac import utils
 
 tf.compat.v1.enable_v2_behavior()
 

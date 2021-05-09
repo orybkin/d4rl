@@ -1,31 +1,35 @@
-import gym
 import os
-from d4rl import offline_env
-from gym.envs.registration import register
-
 from copy import deepcopy
 
 import flow
 import flow.envs
-from flow.networks.ring import RingNetwork
-from flow.core.params import NetParams, VehicleParams, EnvParams, InFlows
-from flow.core.params import SumoLaneChangeParams, SumoCarFollowingParams
-from flow.networks.ring import ADDITIONAL_NET_PARAMS
+import gym
+from flow.controllers import (
+    RLController,
+    SimCarFollowingController,
+    SimLaneChangeController,
+)
 from flow.controllers.car_following_models import IDMController
 from flow.controllers.routing_controllers import ContinuousRouter
-from flow.controllers import SimCarFollowingController, SimLaneChangeController
-from flow.controllers import RLController
-from flow.core.params import InitialConfig
-from flow.core.params import TrafficLightParams
+from flow.core.params import (
+    EnvParams,
+    InFlows,
+    InitialConfig,
+    NetParams,
+    SumoCarFollowingParams,
+    SumoLaneChangeParams,
+    SumoParams,
+    TrafficLightParams,
+    VehicleParams,
+)
+from flow.envs import BayBridgeEnv, TrafficLightGridPOEnv, WaveAttenuationPOEnv
 from flow.envs.ring.accel import AccelEnv
-from flow.core.params import SumoParams
+from flow.networks.ring import ADDITIONAL_NET_PARAMS, RingNetwork
 from flow.utils.registry import make_create_env
-from flow.envs import WaveAttenuationPOEnv
-from flow.envs import BayBridgeEnv, TrafficLightGridPOEnv
+from gym.envs.registration import register
 
-from d4rl.flow import traffic_light_grid
-from d4rl.flow import merge
-from d4rl.flow import bottleneck
+from d4rl import offline_env
+from d4rl.flow import bottleneck, merge, traffic_light_grid
 
 
 def flow_register(flow_params, render=None, **kwargs):

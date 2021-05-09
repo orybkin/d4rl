@@ -1,21 +1,19 @@
+import argparse
+import os
+
+import gym
+import h5py
+import locomotion
+import numpy as np
 import rlkit.torch.pytorch_util as ptu
 from rlkit.data_management.env_replay_buffer import EnvReplayBuffer
 from rlkit.envs.wrappers import NormalizedBoxEnv
-import locomotion
-
-from rlkit.envs.wrappers import NormalizedBoxEnv
 from rlkit.launchers.launcher_util import setup_logger
-from rlkit.samplers.data_collector import MdpPathCollector, CustomMDPPathCollector
-from rlkit.torch.sac.policies import TanhGaussianPolicy, MakeDeterministic, VAEPolicy
-from rlkit.torch.sac.bear import BEARTrainer
+from rlkit.samplers.data_collector import CustomMDPPathCollector, MdpPathCollector
 from rlkit.torch.networks import FlattenMlp
+from rlkit.torch.sac.bear import BEARTrainer
+from rlkit.torch.sac.policies import MakeDeterministic, TanhGaussianPolicy, VAEPolicy
 from rlkit.torch.torch_rl_algorithm import TorchBatchRLAlgorithm
-
-import h5py
-import numpy as np
-import gym
-
-import argparse, os
 
 
 def load_hdf5(dataset, replay_buffer):

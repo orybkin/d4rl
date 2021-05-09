@@ -1,11 +1,13 @@
-import d4rl
-import click
 import os
-import gym
-import numpy as np
 import pickle
+
+import click
+import gym
 import h5py
+import numpy as np
 from mjrl.utils.gym_env import GymEnv
+
+import d4rl
 
 DESC = """
 Helper script to visualize demonstrations.\n

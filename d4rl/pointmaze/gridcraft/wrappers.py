@@ -1,7 +1,8 @@
 import numpy as np
+from gym.spaces import Box
+
 from d4rl.pointmaze.gridcraft.grid_env import REWARD, GridEnv
 from d4rl.pointmaze.gridcraft.wrappers import ObsWrapper
-from gym.spaces import Box
 
 
 class GridObsWrapper(ObsWrapper):

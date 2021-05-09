@@ -2,13 +2,15 @@
 This script runs rollouts on the OPE policies
 using the ONNX runtime and averages the returns.
 """
-import d4rl
-import gym
+import argparse
 import sys
+
+import gym
+import numpy as np
 import onnx
 import onnxruntime as ort
-import numpy as np
-import argparse
+
+import d4rl
 
 parser = argparse.ArgumentParser()
 parser.add_argument(

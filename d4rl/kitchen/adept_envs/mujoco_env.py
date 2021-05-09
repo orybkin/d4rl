@@ -23,9 +23,9 @@ import time
 from typing import Dict, Optional
 
 import gym
+import numpy as np
 from gym import spaces
 from gym.utils import seeding
-import numpy as np
 
 from d4rl.kitchen.adept_envs.simulation.sim_robot import MujocoSimRobot, RenderMode
 

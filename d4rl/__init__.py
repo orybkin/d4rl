@@ -1,6 +1,7 @@
+import collections
 import os
 import sys
-import collections
+
 import numpy as np
 
 import d4rl.locomotion
@@ -8,7 +9,10 @@ import d4rl.locomotion
 import d4rl.pointmaze
 import d4rl.gym_minigrid
 import d4rl.gym_mujoco
-from d4rl.offline_env import set_dataset_path, get_keys
+import d4rl.hand_manipulation_suite
+import d4rl.locomotion
+import d4rl.pointmaze
+from d4rl.offline_env import get_keys, set_dataset_path
 
 SUPPRESS_MESSAGES = bool(os.environ.get("D4RL_SUPPRESS_IMPORT_ERROR", 0))
 

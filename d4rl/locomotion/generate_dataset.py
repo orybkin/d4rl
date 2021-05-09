@@ -1,15 +1,17 @@
-import numpy as np
-import pickle
-import gzip
-import h5py
 import argparse
-from d4rl.locomotion import maze_env, ant, swimmer
-from d4rl.locomotion.wrappers import NormalizedBoxEnv
-from rlkit.torch.pytorch_util import set_gpu_mode
-import torch
-import skvideo.io
-from PIL import Image
+import gzip
 import os
+import pickle
+
+import h5py
+import numpy as np
+import skvideo.io
+import torch
+from PIL import Image
+from rlkit.torch.pytorch_util import set_gpu_mode
+
+from d4rl.locomotion import ant, maze_env, swimmer
+from d4rl.locomotion.wrappers import NormalizedBoxEnv
 
 
 def reset_data():

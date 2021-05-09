@@ -1,7 +1,8 @@
 import argparse
-import d4rl
+
 import gym
 
+import d4rl
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

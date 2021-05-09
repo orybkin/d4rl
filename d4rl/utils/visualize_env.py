@@ -1,11 +1,12 @@
-import gym
-import d4rl
-import click
 import os
+import pickle
+
+import click
 import gym
 import numpy as np
-import pickle
 from mjrl.utils.gym_env import GymEnv
+
+import d4rl
 
 # from mjrl.policies.gaussian_mlp import MLP
 

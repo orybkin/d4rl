@@ -1,9 +1,11 @@
-import gym
-import d4rl
 import argparse
 import os
-import numpy as np
+
+import gym
 import h5py
+import numpy as np
+
+import d4rl
 
 
 def get_keys(h5file):

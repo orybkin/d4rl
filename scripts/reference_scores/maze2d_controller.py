@@ -1,9 +1,10 @@
-import d4rl
-import gym
-from d4rl.pointmaze import waypoint_controller
-from d4rl.pointmaze import maze_model
-import numpy as np
 import argparse
+
+import gym
+import numpy as np
+
+import d4rl
+from d4rl.pointmaze import maze_model, waypoint_controller
 
 
 def main():

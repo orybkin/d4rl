@@ -14,21 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os, getpass
+import copy
+import getpass
+import os
+import time
+
+# obervations structure
+from collections import namedtuple
+
+import click
 import numpy as np
 from termcolor import cprint
-import time
-import copy
-import click
 
 from d4rl.kitchen.adept_envs import base_robot
 from d4rl.kitchen.adept_envs.utils.config import (
     get_config_root_node,
     read_config_from_node,
 )
-
-# obervations structure
-from collections import namedtuple
 
 observation = namedtuple(
     "observation", ["time", "qpos_robot", "qvel_robot", "qpos_object", "qvel_object"]
@@ -75,7 +77,7 @@ class Robot(base_robot.BaseRobot):
         # Robot: Simulation
         else:
             self.robot_name = "Franka"
-            cprint("Initializing %s sim" % self.robot_name, "white", "on_grey")
+            # cprint("Initializing %s sim" % self.robot_name, "white", "on_grey")
 
         # Robot's time
         self.time_start = time.time()
@@ -96,7 +98,7 @@ class Robot(base_robot.BaseRobot):
         self.robot_pos_noise_amp = np.zeros(self.n_dofs, dtype=float)
         self.robot_vel_noise_amp = np.zeros(self.n_dofs, dtype=float)
 
-        print("Reading configurations for %s" % self.robot_name)
+        # print("Reading configurations for %s" % self.robot_name)
         for i in range(self.n_dofs):
             self.robot_mode[i] = read_config_from_node(
                 root, "qpos" + str(i), "mode", int
@@ -352,3 +354,11 @@ class Robot_VelAct(Robot):
             last_obs.qpos_robot[: self.n_jnt] + ctrl_feasible_vel * step_duration
         )
         return ctrl_feasible_position
+
+
+class Robot_Unconstrained(Robot):
+    def ctrl_velocity_limits(self, ctrl_velocity, step_duration):
+        return ctrl_velocity
+
+    def ctrl_position_limits(self, ctrl_position):
+        return ctrl_position
