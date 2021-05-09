@@ -1,15 +1,21 @@
 import gym
 import d4rl
 import cv2
-from d4rl.kitchen.kitchen_envs import KitchenMicrowaveV0
+from envs.d4rl_envs import KitchenEnv
+#from d4rl.kitchen.kitchen_envs import KitchenMicrowaveV0
+import imageio
 
-env = KitchenMicrowaveV0(dense=True)
+env = KitchenEnv()
 env.reset()
 done = False
-while not done:
+imgs = []
+for i in range(150):
     o, r, d, i = env.step(env.action_space.sample())
     print("microwave", i["microwave distance to goal"])
     im = env.render(mode="rgb_array")
-    cv2.imshow("env", im)
-    cv2.waitKey(1)
-    print(r)
+    imgs.append(im)
+    #cv2.imshow("env", im)
+    #cv2.waitKey(1)
+    #print(r)
+#import ipdb ; ipdb.set_trace()
+imageio.mimsave('out.gif', imgs)

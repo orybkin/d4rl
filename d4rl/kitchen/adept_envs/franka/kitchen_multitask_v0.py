@@ -218,14 +218,3 @@ class KitchenTaskRelaxV1(KitchenV0):
         reward_dict["r_total"] = 0.0
         score = 0.0
         return reward_dict, score
-
-    def render(self, mode="human"):
-        if mode == "rgb_array":
-            camera = engine.MovableCamera(self.sim, 256, 256)
-            camera.set_pose(
-                distance=2.2, lookat=[-0.2, 0.5, 2.0], azimuth=70, elevation=-35
-            )
-            img = camera.render()
-            return img
-        else:
-            super(KitchenTaskRelaxV1, self).render()
