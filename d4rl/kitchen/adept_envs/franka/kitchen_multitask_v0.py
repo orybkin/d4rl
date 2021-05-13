@@ -58,8 +58,7 @@ class KitchenV0(robot_env.RobotEnv):
             robot={
                 "robot": "d4rl.kitchen.adept_envs.franka.robot.franka_robot:Robot_Unconstrained"
             },
-        ),  
-
+        ),
         torque=dict(
             model=TORQUE_CTRL_MODEL,
             robot={
@@ -91,7 +90,7 @@ class KitchenV0(robot_env.RobotEnv):
     def __init__(
         self,
         robot_params={},
-        frame_skip=16,
+        frame_skip=40,
         image_obs=False,
         imwidth=64,
         imheight=64,
@@ -105,7 +104,6 @@ class KitchenV0(robot_env.RobotEnv):
         normalize_proprioception_obs=False,
         use_workspace_limits=True,
         control_mode="end_effector",
-        ee_control_type= '6dof'
     ):
         self.control_mode = control_mode
         self.MODEL = self.CTLR_MODES_DICT[self.control_mode]["model"]
@@ -192,7 +190,6 @@ class KitchenV0(robot_env.RobotEnv):
                 distance=2.2, lookat=[-0.2, 0.5, 2.0], azimuth=70, elevation=-35
             ),
         )
-        self.ee_control_type = ee_control_type
         if self.control_mode in ["primitives", "end_effector"]:
             self.reset_mocap_welds(self.sim)
             self.sim.forward()
@@ -285,15 +282,9 @@ class KitchenV0(robot_env.RobotEnv):
             self.action_space = spaces.Box(act_lower, act_upper)
 
         if self.control_mode == "end_effector":
-            if self.ee_control_type == '6dof':
-                ctrl_dim = 6 #xyz pose, xyz rot
-            elif self.ee_control_type == '3dof_gripper_rot':
-                ctrl_dim = 4 # xyz pose, y rot
-            elif self.ee_control_type == '3dof':
-                ctrl_dim = 3 # xyz pose
-            # 1 for gripper 
-            act_lower = -1 * np.ones((ctrl_dim+1))
-            act_upper = 1 * np.ones((ctrl_dim +1))
+            # 3 for xyz pose, 3 for xyz angle, 1 for gripper 
+            act_lower = -1 * np.ones((7,))
+            act_upper = 1 * np.ones((7,))
             self.action_space = spaces.Box(act_lower, act_upper)
 
         if self.control_mode == 'vices':
@@ -404,16 +395,16 @@ class KitchenV0(robot_env.RobotEnv):
 
         action = action.copy()
         pos_ctrl, rot_ctrl, gripper_ctrl = action[:3], action[3:7], action[7:9]
-       
-        pos_ctrl *= 0.02
-        rot_ctrl *= 0.05
-        gripper_ctrl = np.sign(gripper_ctrl)
+
+        pos_ctrl *= 0.05
+        rot_ctrl *= 0.2
         assert gripper_ctrl.shape == (2,)
         action = np.concatenate([pos_ctrl, rot_ctrl, gripper_ctrl])
 
         # Apply action to simulation.
         self.ctrl_set_action(self.sim, action)
         self.mocap_set_action(self.sim, action)
+
         # update coverage grid
         xpos = self.get_ee_pose()
         xpos_rounded = np.around(xpos, self.num_decimals_for_coverage_grid)
@@ -793,25 +784,17 @@ class KitchenV0(robot_env.RobotEnv):
             "joint_position",
             "joint_velocity",
             "torque",
-            "end_effector"
+            "end_effector",
         ]:
             a = np.clip(a, -1.0, 1.0)
-            if self.control_mode == 'end_effector':
+            if self.control_mode == "end_effector":
                 if not self.initializing:
-
-                    if self.ee_control_type == '6dof':
-                        rotation = self.quat_to_rpy(self.sim.data.body_xquat[10]) - np.array(a[3:6])
-                    elif self.ee_control_type == '3dof_gripper_rot':
-                        rotation = self.quat_to_rpy(self.sim.data.body_xquat[10]) - np.array([0, 0 , a[3]])
-
+                    rotation = self.quat_to_rpy(self.sim.data.body_xquat[10]) - np.array(a[3:6])
                     for _ in range(self.frame_skip):
-                        if self.ee_control_type == '3dof':
-                            quat_delta = np.zeros(4)
-                        else:
-                            quat = self.rpy_to_quat(rotation)
-                            quat_delta = self.convert_xyzw_to_wxyz(quat) - self.sim.data.body_xquat[10]
-                    
-                        self._set_action(np.concatenate([ a[:3], quat_delta, [a[-1], a[-1]] ]))
+                        
+                        quat = self.rpy_to_quat(rotation)
+                        quat_delta = self.convert_xyzw_to_wxyz(quat) - self.sim.data.body_xquat[10]
+                        self._set_action(np.concatenate([ a[:3], quat_delta, [a[-1], -a[-1]] ]))
                         self.sim.step()
 
             elif self.control_mode == "vices":
