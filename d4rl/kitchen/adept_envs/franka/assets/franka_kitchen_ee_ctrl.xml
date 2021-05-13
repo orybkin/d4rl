@@ -51,7 +51,7 @@
         <!-- Mocap -->
 	<body mocap="true" name="mocap" pos="0 0 0">
 		
-            <geom conaffinity="0" contype="0" pos="0 0 0" rgba="1 0 0 1" size="0.02" type='sphere'></geom>
+            <geom conaffinity="0" contype="0" pos="0 0 0" rgba="1 0 0 0" size="0.02" type='sphere'></geom>
 <!--            <geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.1" size="1 0.005 0.005" type="box"></geom>-->
 <!--            <geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.1" size="0.005 1 0.001" type="box"></geom>-->
 <!--            <geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0.5 0 0.1" size="0.005 0.005 1" type="box"></geom>-->
