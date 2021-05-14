@@ -397,7 +397,7 @@ class KitchenV0(robot_env.RobotEnv):
         pos_ctrl, rot_ctrl, gripper_ctrl = action[:3], action[3:7], action[7:9]
 
         pos_ctrl *= 0.05
-        rot_ctrl *= 0.2
+        rot_ctrl *= 0.05
         assert gripper_ctrl.shape == (2,)
         action = np.concatenate([pos_ctrl, rot_ctrl, gripper_ctrl])
 
